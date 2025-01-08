@@ -82,6 +82,7 @@ input:checked + label {
   font-family: 'Poppins', sans-serif;
 }
 
+
 #mensajes {
   width: 280px;
   background: #EEEEEE;
