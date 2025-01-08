@@ -40,7 +40,7 @@ Elige entre tres adorables y poderosos personajes:
 ## 🕹️ **Cómo Jugar**  
 
 1. Visita el juego en el siguiente enlace:  
-   👉 **[Jugar MOKEPON](https://joaquinescobardev.github.io/mokepon-programacionBasica-platzi/)**  
+   👉 **[Jugar MOKEPON](https://joaquinescobardev.github.io/Mokepon/index.html)**  
 
 2. Selecciona tu mascota favorita.  
 
