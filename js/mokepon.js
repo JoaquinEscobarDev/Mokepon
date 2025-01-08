@@ -46,25 +46,23 @@ class Mokepon {
 let hipodoge = new Mokepon(
     "Hipodoge",
     "./assets/mokepons_mokepon_hipodoge_attack.png",
-    5
+    3
 );
 
 let capipepo = new Mokepon(
     "Capipepo",
     "./assets/mokepons_mokepon_capipepo_attack.png",
-    5
+    3
 );
 
 let ratigueya = new Mokepon(
     "Ratigueya",
     "./assets/mokepons_mokepon_ratigueya_attack.png",
-    5
+    3
 );
 
 // Definición de ataques para cada Mokepon
 hipodoge.ataques.push(
-    { nombre: "💧", id: "boton-agua" },
-    { nombre: "💧", id: "boton-agua" },
     { nombre: "💧", id: "boton-agua" },
     { nombre: "🔥", id: "boton-fuego" },
     { nombre: "🌱", id: "boton-tierra" }
@@ -72,15 +70,11 @@ hipodoge.ataques.push(
 
 capipepo.ataques.push(
     { nombre: "🌱", id: "boton-tierra" },
-    { nombre: "🌱", id: "boton-tierra" },
-    { nombre: "🌱", id: "boton-tierra" },
     { nombre: "💧", id: "boton-agua" },
     { nombre: "🔥", id: "boton-fuego" }
 );
 
 ratigueya.ataques.push(
-    { nombre: "🔥", id: "boton-fuego" },
-    { nombre: "🔥", id: "boton-fuego" },
     { nombre: "🔥", id: "boton-fuego" },
     { nombre: "💧", id: "boton-agua" },
     { nombre: "🌱", id: "boton-tierra" }
@@ -118,9 +112,11 @@ function iniciarJuego() {
 
 // Función que selecciona la mascota del jugador
 function seleccionarMascotaJugador() {
+    // Oculta la sección de selección de mascota y muestra la sección de ataques
     sectionSeleccionarMascota.style.display = "none";
     sectionSeleccionarAtaque.style.display = "flex";
 
+    // Valida que el jugador haya seleccionado una mascota
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id;
         mascotaJugador = inputHipodoge.id;
@@ -132,11 +128,16 @@ function seleccionarMascotaJugador() {
         mascotaJugador = inputRatigueya.id;
     } else {
         alert("Selecciona una mascota");
+        
     }
 
+    // Después de seleccionar la mascota, extrae los ataques correspondientes
     extraerAtaques(mascotaJugador);
+
+    // Selecciona la mascota enemiga de forma aleatoria
     seleccionarMascotaEnemigo();
 }
+
 
 // Función para extraer los ataques del Mokepon seleccionado por el jugador
 function extraerAtaques(mascotaJugador) {
@@ -202,9 +203,9 @@ function seleccionarMascotaEnemigo() {
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1);
 
-    if (ataqueAleatorio == 0 || ataqueAleatorio == 1) {
+    if (ataqueAleatorio == 0) {
         ataqueEnemigo.push("FUEGO");
-    } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4) {
+    } else if (ataqueAleatorio == 1) {
         ataqueEnemigo.push("AGUA");
     } else {
         ataqueEnemigo.push("TIERRA");
@@ -214,7 +215,7 @@ function ataqueAleatorioEnemigo() {
 
 // Función que verifica si ambos jugadores han atacado y llama a la función de combate
 function iniciarPelea() {
-    if (ataqueJugador.length === 5) {
+    if (ataqueJugador.length === 3) {
         combate();
     };
 }
@@ -228,10 +229,15 @@ function iAmbosOponentes(jugador, enemigo) {
 // Función que realiza la comparación de ataques y actualiza el resultado del combate
 function combate() {
     for (let i = 0; i < ataqueJugador.length; i++) {
+        // Verifica si los ataques son iguales, lo cual es un empate
         if (ataqueJugador[i] === ataqueEnemigo[i]) {
             iAmbosOponentes(i, i);
             crearMensaje("EMPATE");
-        } else if (ataqueJugador[i] === "FUEGO" && ataqueEnemigo[i] === "TIERRA") {
+            victoriasEnemigo = victoriasEnemigo;
+            victoriasJugador = victoriasJugador;
+        } 
+        // Verifica las victorias del jugador
+        else if (ataqueJugador[i] === "FUEGO" && ataqueEnemigo[i] === "TIERRA") {
             iAmbosOponentes(i, i);
             crearMensaje("GANASTE");
             victoriasJugador++;
@@ -246,7 +252,9 @@ function combate() {
             crearMensaje("GANASTE");
             victoriasJugador++;
             spanVidasJugador.innerHTML = victoriasJugador;
-        } else {
+        } 
+        // Verifica las victorias del enemigo
+        else {
             iAmbosOponentes(i, i);
             crearMensaje("PERDISTE");
             victoriasEnemigo++;
@@ -254,19 +262,25 @@ function combate() {
         }
     }
 
+    // Al finalizar el ciclo, revisa quién ganó
     revisarVidas();
 }
 
-// Función que revisa las vidas de los jugadores y muestra el mensaje final
 function revisarVidas() {
-    if (victoriasJugador == 0 || victoriasJugador > victoriasEnemigo) {
+    // Revisa si el jugador ha ganado
+    if (victoriasJugador > victoriasEnemigo) {
         crearMensajeFinal("FELICITACIONES! Ganaste :)");
-    } else if (victoriasEnemigo == 0 || victoriasJugador < victoriasEnemigo) {
+    } 
+    // Revisa si el enemigo ha ganado
+    else if (victoriasEnemigo > victoriasJugador) {
         crearMensajeFinal("Lo siento, perdiste :(");
-    } else if (victoriasJugador == victoriasEnemigo) {
+    }
+    // Si hay empate en victorias
+    else {
         crearMensajeFinal("Wow, es un empate!");
     }
 }
+
 
 // Función que crea un mensaje para mostrar los resultados de un ataque
 function crearMensaje(resultado) {
