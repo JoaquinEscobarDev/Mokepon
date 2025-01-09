@@ -10,7 +10,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 
 .titulo {
@@ -82,7 +81,6 @@ input:checked + label {
   font-family: 'Poppins', sans-serif;
 }
 
-
 #mensajes {
   width: 280px;
   background: #EEEEEE;
@@ -98,21 +96,6 @@ input:checked + label {
   border: none;
   color: #11468F;
   font-family: 'Poppins', sans-serif;
-}
-
-#boton-reiniciar-mapa {
-  position: absolute;
-  top: 710px;
-  right: 740px;
-  padding: 10px;
-  box-sizing: border-box;
-  border-radius: 20px;
-  border-color: transparent;
-  width: 80px;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  font-size: 30px;
-
 }
 
 .ataques {
@@ -132,57 +115,17 @@ input:checked + label {
   align-items: center;
 }
 
-#ver-mapa{
+#ver-mapa {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 }
 
-#mapa{
-border: 2px solid black;
-
+#mapa {
+  border: 2px solid white;
 }
 
-
-.moverDerecha{
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  font-size: 50px;
-  text-align: center;
-  top: 850px;
-  right: 290px;
-}
-.moverIzquierda{
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  font-size: 50px;
-  text-align: center;
-  top: 850px;
-  left: 290px;
-}
-.moverArriba{
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  font-size: 50px;
-  text-align: center;
-  top: 770px;
-}
-.moverAbajo{
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  font-size: 50px;
-  text-align: center;
-  top: 850px;
-}
-
-
-
-@media (max-width: 600px) {
+@media (max-width: 360px) {
   .tarjetas, .tarjetas-ataques {
     flex-direction: column;
   }

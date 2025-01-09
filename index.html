@@ -7,12 +7,11 @@
     </head>
     <body>
         <section id="seleccionar-mascota">
-            <h1 class="titulo">Mokepon</h1> 
+            <h1 class="titulo">Mokepono</h1> 
 
             <h2 class="subtitulo">Elige tu mascota:</h2>
 
-            <div id="contenedorTarjetas" class="tarjetas">
-                
+            <div id='contenedorTarjetas' class="tarjetas">
                 
             </div>
 
@@ -20,31 +19,21 @@
         </section>
 
         <section id="ver-mapa">
-            <h1 class="titulo">Recorrer el mapa con tu Mokepon</h1>
-
-            <canvas id="mapa">   
-            </canvas>
-            <button class="moverDerecha" onmousedown="moverDerecha()" onmouseup="detener()">➡</button>
-            <button class="moverIzquierda" onmousedown="moverIzquierda()" onmouseup="detener()">⬅</button>
-            <button class="moverArriba" onmousedown="moverArriba()" onmouseup="detener()">⬆</button>
-            <button class="moverAbajo" onmousedown="moverAbajo()" onmouseup="detener()">⬇</button>
-            <section id="reiniciarMapa">
-                <button id="boton-reiniciar-mapa">🔃</button>
-            </section>
-            
-            <!-- <button class="moverDerecha" onclick="moverDerecha()" >➡</button>
-            <button class="moverIzquierda" onclick="moverIzquierda()" >⬅</button>
-            <button class="moverArriba" onclick="moverArriba()" >⬆</button>
-            <button class="moverAbajo" onclick="moverAbajo()" >⬇</button> -->
+            <h1 class="titulo">Recorre el mapa con tu mokepon</h1> 
+            <canvas id="mapa"></canvas>
+            <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()">Arriba</button>
+            <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">Izquierda</button>
+            <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">Abajo</button>
+            <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">Derecha</button>
         </section>
 
         <section id="seleccionar-ataque">
             <h1 class="titulo">Mokepon</h1>
 
-            <h2 class="subtitulo">Elige 3 ataques para empezar:</h2>
+            <h2 class="subtitulo">Elige tu ataque:</h2>
 
-            <div id="contenedorAtaques" class="tarjetas-ataques">
-                
+            <div id='contenedorAtaques' class="tarjetas-ataques">
+
             </div>
 
             <div id="mensajes">
@@ -57,12 +46,12 @@
 
             <div class="ataques">
                 <div class="ataques-jugador">
-                    <p id="vidas-jugador">3</p>
+                    <p id="vidas-jugador">0</p>
                     <p id="mascota-jugador"></p>
                     <div id="ataques-del-jugador"></div>
                 </div>
-                <div class="ataques-enemigo">
-                    <p id="vidas-enemigo">3</p>
+                <div class="ataques-enemigo">   
+                    <p id="vidas-enemigo">0</p>
                     <p id="mascota-enemigo"></p>
                     <div id="ataques-del-enemigo"></div>
                 </div>
@@ -71,3 +60,5 @@
         <script src="./js/mokepon.js"></script>
     </body>
 </html>
+
+
