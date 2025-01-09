@@ -100,6 +100,21 @@ input:checked + label {
   font-family: 'Poppins', sans-serif;
 }
 
+#boton-reiniciar-mapa {
+  position: absolute;
+  top: 710px;
+  right: 740px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-color: transparent;
+  width: 80px;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+
+}
+
 .ataques {
   display: grid;
   grid-template-columns: 100px 100px;
@@ -126,7 +141,6 @@ input:checked + label {
 
 #mapa{
 border: 2px solid black;
-width: 700px;
 
 }
 
@@ -137,7 +151,7 @@ width: 700px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 550px;
+  top: 850px;
   right: 290px;
 }
 .moverIzquierda{
@@ -146,7 +160,7 @@ width: 700px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 550px;
+  top: 850px;
   left: 290px;
 }
 .moverArriba{
@@ -155,7 +169,7 @@ width: 700px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 470px;
+  top: 770px;
 }
 .moverAbajo{
   position: absolute;
@@ -163,7 +177,7 @@ width: 700px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 550px;
+  top: 850px;
 }
 
 
