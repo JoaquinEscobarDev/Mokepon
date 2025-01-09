@@ -1,7 +1,9 @@
 const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
 const sectionReiniciar = document.getElementById('reiniciar')
+const sectionReiniciarM = document.getElementById('reiniciarM')
 const botonMascotaJugador = document.getElementById('boton-mascota')
 const botonReiniciar = document.getElementById('boton-reiniciar')
+const botonReiniciarM = document.getElementById('boton-reiniciarM')
 sectionReiniciar.style.display = 'none'
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
@@ -162,6 +164,7 @@ function iniciarJuego() {
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
 
     botonReiniciar.addEventListener('click', reiniciarJuego)
+    botonReiniciarM.addEventListener('click', reiniciarJuego)
 }
 
 function seleccionarMascotaJugador() {
@@ -407,6 +410,7 @@ function sePresionoUnaTecla(event) {
 }
 
 function iniciarMapa() {
+    
     mapa.width = 320
     mapa.height = 240
     mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)

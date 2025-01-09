@@ -93,9 +93,24 @@ input:checked + label {
 }
 
 #boton-reiniciar {
-  border: none;
-  color: #11468F;
+  width: 120px;
+  height: 40px;
+  background-color: #11468F;
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  font-size: 18px;
   font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#boton-reiniciar:hover {
+  background-color: #5D8BF4;
+}
+
+#boton-reiniciar:active {
+  transform: scale(0.95);
 }
 
 .ataques {
@@ -123,6 +138,64 @@ input:checked + label {
 
 #mapa {
   border: 2px solid white;
+}
+
+.botones-direccion {
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.boton-direccion {
+  width: 60px;
+  height: 60px;
+  background-color: #11468F;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.boton-direccion:hover {
+  background-color: #5D8BF4;
+}
+
+.boton-direccion:active {
+  transform: scale(0.9);
+}
+
+#reiniciar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#boton-reiniciarM {
+  width: 120px;
+  height: 40px;
+  background-color: #11468F;
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#boton-reiniciarM:hover {
+  background-color: #5D8BF4;
+}
+
+#boton-reiniciarM:active {
+  transform: scale(0.95);
 }
 
 @media (max-width: 360px) {
