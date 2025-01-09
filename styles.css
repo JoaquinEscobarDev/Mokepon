@@ -130,6 +130,43 @@ width: 600px;
 }
 
 
+.moverCapipepoDerecha{
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  text-align: center;
+  top: 490px;
+  right: 290px;
+}
+.moverCapipepoIzquierda{
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  text-align: center;
+  top: 490px;
+  left: 290px;
+}
+.moverCapipepoArriba{
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  text-align: center;
+  top: 410px;
+}
+.moverCapipepoAbajo{
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  text-align: center;
+  top: 490px;
+}
+
+
+
 @media (max-width: 600px) {
   .tarjetas, .tarjetas-ataques {
     flex-direction: column;

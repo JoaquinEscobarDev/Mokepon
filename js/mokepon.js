@@ -34,7 +34,7 @@ let vidasJugador = 3;
 let vidasEnemigo = 3;
 let victoriasJugador = 0;
 let victoriasEnemigo = 0;
-let liezo = mapa.getContext("2d"); // Contexto del canvas
+let lienzo = mapa.getContext("2d"); // Contexto del canvas
 
 // Clase Mokepon que define los atributos de cada mascota
 class Mokepon {
@@ -43,6 +43,13 @@ class Mokepon {
         this.foto = foto;
         this.vida = vida;
         this.ataques = [];
+        this.x = 20;
+        this.y = 30;
+        this.ancho = 20;
+        this.alto = 20; 
+        this.mapaFoto = new Image();
+        this.mapaFoto.src = foto;
+
     }
 }
 
@@ -121,10 +128,9 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display = "none";
     // sectionSeleccionarAtaque.style.display = "flex";
     sectionVerMapa.style.display = "flex";
-    let imgCapipepo = new Image(); // Crea una nueva imagen
-    imgCapipepo.src = "./assets/mokepons_mokepon_capipepo_attack.png"; // Asigna la ruta de la imagen
-    liezo.drawImage(imgCapipepo, 20, 40, 100, 100); // Dibuja la imagen en el canvas
-    liezo.fillRect(5, 15, 20, 40); // Dibuja un rectángulo en el canvas
+
+
+
 
 
     // Valida que el jugador haya seleccionado una mascota
@@ -320,6 +326,33 @@ function reiniciarJuego() {
 // Función que genera un número aleatorio entre un rango específico
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+function pintarPersonaje() {
+    lienzo.clearRect(0, 0, mapa.width, mapa.height); // Limpia el canvas
+    lienzo.drawImage(capipepo.mapaFoto, capipepo.x, capipepo.y, capipepo.ancho, capipepo.alto); // Dibuja la imagen en el canvas
+}
+
+function moverCapipepoDerecha() {
+    capipepo.x = capipepo.x + 5;
+    pintarPersonaje();
+    
+}
+function moverCapipepoIzquierda() {
+    capipepo.x = capipepo.x - 5;
+    pintarPersonaje();
+    
+}
+function moverCapipepoArriba() {
+    capipepo.y = capipepo.y - 5;
+    pintarPersonaje();
+    
+}
+function moverCapipepoAbajo() {
+    capipepo.y = capipepo.y + 5;
+    pintarPersonaje();
+    
 }
 
 // Evento que ejecuta la función iniciarJuego cuando la página se carga
