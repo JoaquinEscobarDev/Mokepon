@@ -23,16 +23,32 @@
             <h1 class="titulo">Recorre el mapa con tu mokepon</h1> 
             <canvas id="mapa"></canvas>
             <div class="botones-direccion">
-              <div></div>
-              <button class="boton-direccion" onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</button>
-              <div></div>
-              <button class="boton-direccion" onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</button>
-              <div></div>
-              <button class="boton-direccion" onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</button>
-              <div></div>
-              <button class="boton-direccion" onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</button>
-              <div></div>
-            </div>
+                <div></div>
+                <button class="boton-direccion" 
+                        onmousedown="moverArriba()" 
+                        onmouseup="detenerMovimiento()" 
+                        ontouchstart="moverArriba()" 
+                        ontouchend="detenerMovimiento()">⬆️</button>
+                <div></div>
+                <button class="boton-direccion" 
+                        onmousedown="moverIzquierda()" 
+                        onmouseup="detenerMovimiento()" 
+                        ontouchstart="moverIzquierda()" 
+                        ontouchend="detenerMovimiento()">⬅️</button>
+                <div></div>
+                <button class="boton-direccion" 
+                        onmousedown="moverDerecha()" 
+                        onmouseup="detenerMovimiento()" 
+                        ontouchstart="moverDerecha()" 
+                        ontouchend="detenerMovimiento()">➡️</button>
+                <div></div>
+                <button class="boton-direccion" 
+                        onmousedown="moverAbajo()" 
+                        onmouseup="detenerMovimiento()" 
+                        ontouchstart="moverAbajo()" 
+                        ontouchend="detenerMovimiento()">⬇️</button>
+                <div></div>
+              </div>
             <section id="reiniciarM">
               <button id="boton-reiniciarM">🔄 Reiniciar</button>
             </section>
