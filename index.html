@@ -24,10 +24,15 @@
 
             <canvas id="mapa">   
             </canvas>
-            <button class="moverCapipepoDerecha" onclick="moverCapipepoDerecha()">➡</button>
-            <button class="moverCapipepoIzquierda" onclick="moverCapipepoIzquierda()">⬅</button>
-            <button class="moverCapipepoArriba" onclick="moverCapipepoArriba()">⬆</button>
-            <button class="moverCapipepoAbajo" onclick="moverCapipepoAbajo()">⬇</button>
+            <button class="moverDerecha" onmousedown="moverDerecha()" onmouseup="detener()">➡</button>
+            <button class="moverIzquierda" onmousedown="moverIzquierda()" onmouseup="detener()">⬅</button>
+            <button class="moverArriba" onmousedown="moverArriba()" onmouseup="detener()">⬆</button>
+            <button class="moverAbajo" onmousedown="moverAbajo()" onmouseup="detener()">⬇</button>
+            
+            <!-- <button class="moverDerecha" onclick="moverDerecha()" >➡</button>
+            <button class="moverIzquierda" onclick="moverIzquierda()" >⬅</button>
+            <button class="moverArriba" onclick="moverArriba()" >⬆</button>
+            <button class="moverAbajo" onclick="moverAbajo()" >⬇</button> -->
         </section>
 
         <section id="seleccionar-ataque">

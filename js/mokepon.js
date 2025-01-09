@@ -35,6 +35,7 @@ let vidasEnemigo = 3;
 let victoriasJugador = 0;
 let victoriasEnemigo = 0;
 let lienzo = mapa.getContext("2d"); // Contexto del canvas
+let intervalo = setInterval(pintarPersonaje, 1000 / 60); // Intervalo para pintar el personaje
 
 // Clase Mokepon que define los atributos de cada mascota
 class Mokepon {
@@ -45,10 +46,12 @@ class Mokepon {
         this.ataques = [];
         this.x = 20;
         this.y = 30;
-        this.ancho = 20;
-        this.alto = 20; 
+        this.ancho = 35;
+        this.alto = 35; 
         this.mapaFoto = new Image();
         this.mapaFoto.src = foto;
+        this.velocidadX = 0;
+        this.velocidadY = 0;
 
     }
 }
@@ -128,6 +131,7 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display = "none";
     // sectionSeleccionarAtaque.style.display = "flex";
     sectionVerMapa.style.display = "flex";
+    iniciarMapa();
 
 
 
@@ -330,29 +334,59 @@ function aleatorio(min, max) {
 
 
 function pintarPersonaje() {
+    capipepo.x += capipepo.velocidadX; // Mueve el personaje en el eje X
+    capipepo.y += capipepo.velocidadY; // Mueve el personaje en el eje Y
+
     lienzo.clearRect(0, 0, mapa.width, mapa.height); // Limpia el canvas
     lienzo.drawImage(capipepo.mapaFoto, capipepo.x, capipepo.y, capipepo.ancho, capipepo.alto); // Dibuja la imagen en el canvas
 }
 
-function moverCapipepoDerecha() {
-    capipepo.x = capipepo.x + 5;
-    pintarPersonaje();
+function presionTecla(e) {
+   
+        switch (e.key) {
+            case "ArrowRight":
+                moverDerecha();
+                break;
+            case "ArrowLeft":
+                moverIzquierda();
+                break;
+            case "ArrowUp":
+                moverArriba();
+                break;
+            case "ArrowDown":
+                moverAbajo();
+                break;
+        };
+
+};
+
+function moverDerecha() {
+    capipepo.velocidadX = 5;
     
 }
-function moverCapipepoIzquierda() {
-    capipepo.x = capipepo.x - 5;
-    pintarPersonaje();
+function moverIzquierda() {
+    capipepo.velocidadX = -5;
     
 }
-function moverCapipepoArriba() {
-    capipepo.y = capipepo.y - 5;
-    pintarPersonaje();
+function moverArriba() {
+    capipepo.velocidadY = -5;
     
 }
-function moverCapipepoAbajo() {
-    capipepo.y = capipepo.y + 5;
-    pintarPersonaje();
-    
+function moverAbajo() {
+    capipepo.velocidadY = 5;
+}
+
+function detener() {
+    capipepo.velocidadX = 0;
+    capipepo.velocidadY = 0;
+}
+
+function iniciarMapa(){
+    intervalo = setInterval(pintarPersonaje, 1000 / 60);
+
+
+    window.addEventListener("keydown", presionTecla);
+    window.addEventListener("keyup", detener);
 }
 
 // Evento que ejecuta la función iniciarJuego cuando la página se carga

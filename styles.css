@@ -126,43 +126,44 @@ input:checked + label {
 
 #mapa{
 border: 2px solid black;
-width: 600px;
+width: 700px;
+
 }
 
 
-.moverCapipepoDerecha{
+.moverDerecha{
   position: absolute;
   width: 70px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 490px;
+  top: 550px;
   right: 290px;
 }
-.moverCapipepoIzquierda{
+.moverIzquierda{
   position: absolute;
   width: 70px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 490px;
+  top: 550px;
   left: 290px;
 }
-.moverCapipepoArriba{
+.moverArriba{
   position: absolute;
   width: 70px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 410px;
+  top: 470px;
 }
-.moverCapipepoAbajo{
+.moverAbajo{
   position: absolute;
   width: 70px;
   height: 70px;
   font-size: 50px;
   text-align: center;
-  top: 490px;
+  top: 550px;
 }
 
 
