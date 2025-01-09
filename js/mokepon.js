@@ -47,40 +47,82 @@ mapaBackground.src = "./assets/fondoMapa.jpg"; // Ruta de la imagen de fondo
 
 // Clase Mokepon que define los atributos de cada mascota
 class Mokepon {
-  constructor(nombre, foto, vida) {
-    this.nombre = nombre;
-    this.foto = foto;
-    this.vida = vida;
-    this.ataques = [];
-    this.x = 20;
-    this.y = 30;
-    this.ancho = 35;
-    this.alto = 35;
-    this.mapaFoto = new Image();
-    this.mapaFoto.src = foto;
-    this.velocidadX = 0;
-    this.velocidadY = 0;
-  }
+  constructor(nombre, foto, vida, fotoMapa, x = 10, y = 10 ) {
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+        this.ataques = []
+        this.x = x
+        this.y = y
+        this.ancho = 40
+        this.alto = 40
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = fotoMapa
+        this.velocidadX = 0
+        this.velocidadY = 0
+    }
+
+    pintarMokepon() {
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto
+          );
+    }
+
 }
 
 // Creación de instancias de Mokepones
 let hipodoge = new Mokepon(
   "Hipodoge",
   "./assets/mokepons_mokepon_hipodoge_attack.png",
-  3
+  3,
+  "./assets/hipodoge.png"
 );
 
 let capipepo = new Mokepon(
   "Capipepo",
   "./assets/mokepons_mokepon_capipepo_attack.png",
-  3
+  3,
+ "./assets/capipepo.png"
 );
 
 let ratigueya = new Mokepon(
   "Ratigueya",
   "./assets/mokepons_mokepon_ratigueya_attack.png",
-  3
+  3,
+ "./assets/ratigueya.png"
 );
+
+// Creación de instancias de Mokepones rivales
+let hipodogeEnemigo = new Mokepon(
+    "Hipodoge",
+    "./assets/mokepons_mokepon_hipodoge_attack.png",
+    3,
+    "./assets/hipodoge.png",
+    80,
+    120
+  );
+  
+  let capipepoEnemigo = new Mokepon(
+    "Capipepo",
+    "./assets/mokepons_mokepon_capipepo_attack.png",
+    3,
+   "./assets/capipepo.png",
+   150,
+   95
+  );
+  
+  let ratigueyaEnemigo = new Mokepon(
+    "Ratigueya",
+    "./assets/mokepons_mokepon_ratigueya_attack.png",
+    3,
+   "./assets/ratigueya.png",
+   200,
+   190
+  );
 
 // Definición de ataques para cada Mokepon
 hipodoge.ataques.push(
@@ -342,13 +384,12 @@ function pintarCanvas() {
 
   lienzo.clearRect(0, 0, mapa.width, mapa.height); // Limpia el canvas
   lienzo.drawImage(mapaBackground, 0, 0, mapa.width, mapa.height); // Dibuja el fondo del mapa
-  lienzo.drawImage(
-    mascotaJugadorObj.mapaFoto,
-    mascotaJugadorObj.x,
-    mascotaJugadorObj.y,
-    mascotaJugadorObj.ancho,
-    mascotaJugadorObj.alto
-  ); // Dibuja la imagen en el canvas
+
+  mascotaJugadorObj.pintarMokepon(); // Dibuja al personaje en el canvas
+    hipodogeEnemigo.pintarMokepon();
+    capipepoEnemigo.pintarMokepon();
+    ratigueyaEnemigo.pintarMokepon();
+
 }
 
 function obtenerMascota() {
