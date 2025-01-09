@@ -268,7 +268,7 @@ function secuenciaAtaque() {
 
         console.log(ataqueJugador);
 
-        boton.style.background = "#112f58";
+        boton.style.background = "red";
 
         boton.disabled = true;
       } else if (e.target.textContent === "💧") {
@@ -276,7 +276,7 @@ function secuenciaAtaque() {
 
         console.log(ataqueJugador);
 
-        boton.style.background = "#112f58";
+        boton.style.background = "blue";
 
         boton.disabled = true;
       } else {
@@ -284,7 +284,7 @@ function secuenciaAtaque() {
 
         console.log(ataqueJugador);
 
-        boton.style.background = "#112f58";
+        boton.style.background = "green";
 
         boton.disabled = true;
       }
