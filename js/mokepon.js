@@ -102,8 +102,8 @@ let hipodogeEnemigo = new Mokepon(
     "./assets/mokepons_mokepon_hipodoge_attack.png",
     3,
     "./assets/hipodoge.png",
-    80,
-    120
+    620,
+    450
   );
   
   let capipepoEnemigo = new Mokepon(
@@ -111,8 +111,8 @@ let hipodogeEnemigo = new Mokepon(
     "./assets/mokepons_mokepon_capipepo_attack.png",
     3,
    "./assets/capipepo.png",
-   150,
-   95
+   380,
+   40
   );
   
   let ratigueyaEnemigo = new Mokepon(
@@ -120,8 +120,8 @@ let hipodogeEnemigo = new Mokepon(
     "./assets/mokepons_mokepon_ratigueya_attack.png",
     3,
    "./assets/ratigueya.png",
-   200,
-   190
+   320,
+   480
   );
 
 // Definición de ataques para cada Mokepon
@@ -390,6 +390,12 @@ function pintarCanvas() {
     capipepoEnemigo.pintarMokepon();
     ratigueyaEnemigo.pintarMokepon();
 
+    if(mascotaJugadorObj.velocidadX !== 0 || mascotaJugadorObj.velocidadY !== 0){
+    revisarColision(hipodogeEnemigo);
+    revisarColision(capipepoEnemigo);
+    revisarColision(ratigueyaEnemigo);
+    }
+
 }
 
 function obtenerMascota() {
@@ -442,7 +448,7 @@ function detener() {
 }
 
 function iniciarMapa() {
-  mapa.width = 800;
+  mapa.width = 700;
   mapa.height = 600;
   mascotaJugadorObj = obtenerMascota();
 
@@ -451,6 +457,35 @@ function iniciarMapa() {
   window.addEventListener("keydown", presionTecla);
   window.addEventListener("keyup", detener);
 }
+
+function revisarColision(enemigo) {
+    // Coordenadas del enemigo
+    const arribaEnemigo = enemigo.y;
+    const abajoEnemigo = enemigo.y + enemigo.alto;
+    const izquierdaEnemigo = enemigo.x;
+    const derechaEnemigo = enemigo.x + enemigo.ancho;
+
+    // Coordenadas de la mascota del jugador
+    const arribaMascota = mascotaJugadorObj.y;
+    const abajoMascota = mascotaJugadorObj.y + mascotaJugadorObj.alto;
+    const izquierdaMascota = mascotaJugadorObj.x;
+    const derechaMascota = mascotaJugadorObj.x + mascotaJugadorObj.ancho;
+
+    // Verificar colisión
+    const noHayColision =
+        abajoMascota < arribaEnemigo || // Mascota está arriba del enemigo
+        arribaMascota > abajoEnemigo || // Mascota está abajo del enemigo
+        derechaMascota < izquierdaEnemigo || // Mascota está a la izquierda del enemigo
+        izquierdaMascota > derechaEnemigo; // Mascota está a la derecha del enemigo
+
+    if (!noHayColision) {
+        detener();
+        alert("¡Colisión detectada con: "+ enemigo.nombre +"!");
+        return true; // Hay colisión
+    }
+    return false; // No hay colisión
+}
+
 
 // Evento que ejecuta la función iniciarJuego cuando la página se carga
 window.addEventListener("load", iniciarJuego);
