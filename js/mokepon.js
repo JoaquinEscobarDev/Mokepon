@@ -14,6 +14,9 @@ const ataquesDelJugador = document.getElementById("ataques-del-jugador");
 const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
 const contenedorTarjetas = document.getElementById("contenedorTarjetas");
 const contenedorAtaques = document.getElementById("contenedorAtaques");
+const sectionVerMapa = document.getElementById("ver-mapa");
+const mapa = document.getElementById("mapa");
+
 
 // Variables que almacenan la información de los Mokepones, ataques, y estado del juego
 let mokepones = [];
@@ -31,6 +34,7 @@ let vidasJugador = 3;
 let vidasEnemigo = 3;
 let victoriasJugador = 0;
 let victoriasEnemigo = 0;
+let liezo = mapa.getContext("2d"); // Contexto del canvas
 
 // Clase Mokepon que define los atributos de cada mascota
 class Mokepon {
@@ -87,6 +91,7 @@ mokepones.push(hipodoge, capipepo, ratigueya);
 function iniciarJuego() {
     // Se oculta la sección de selección de ataques al inicio
     sectionSeleccionarAtaque.style.display = "none";
+    sectionVerMapa.style.display = "none";
 
     // Creación de las opciones para elegir Mokepon en el DOM
     mokepones.forEach((mokepon) => {
@@ -114,7 +119,13 @@ function iniciarJuego() {
 function seleccionarMascotaJugador() {
     // Oculta la sección de selección de mascota y muestra la sección de ataques
     sectionSeleccionarMascota.style.display = "none";
-    sectionSeleccionarAtaque.style.display = "flex";
+    // sectionSeleccionarAtaque.style.display = "flex";
+    sectionVerMapa.style.display = "flex";
+    let imgCapipepo = new Image(); // Crea una nueva imagen
+    imgCapipepo.src = "./assets/mokepons_mokepon_capipepo_attack.png"; // Asigna la ruta de la imagen
+    liezo.drawImage(imgCapipepo, 20, 40, 100, 100); // Dibuja la imagen en el canvas
+    liezo.fillRect(5, 15, 20, 40); // Dibuja un rectángulo en el canvas
+
 
     // Valida que el jugador haya seleccionado una mascota
     if (inputHipodoge.checked) {
