@@ -203,7 +203,28 @@ function iniciarJuego() {
 
   botonReiniciar.addEventListener("click", reiniciarJuego);
   botonReiniciarM.addEventListener("click", reiniciarJuego);
+
+  unirseAlJuego();
 }
+
+function unirseAlJuego() {
+  fetch("http://localhost:8080/unirse") // realiza llamada tipo GET por defecto
+    .then(function (res) {
+      console.log(res);
+      if (res.ok) {
+        return res.text(); // Retornamos el texto de la respuesta
+      } else {
+        throw new Error("Respuesta no fue ok");
+      }
+    })
+    .then(function (respuesta) {
+      console.log(respuesta); // Procesamos la respuesta una vez resuelta
+    })
+    .catch(function (error) {
+      console.error("Error al unirse al juego:", error); // Manejo de errores
+    });
+}
+
 
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
