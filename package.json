@@ -1,0 +1,19 @@
+{
+  "name": "mokepon",
+  "version": "1.0.0",
+  "description": "¡Un emocionante juego de combate por turnos inspirado en las clásicas mecánicas de Pokémon!  \r Selecciona tu mascota, lucha contra tus enemigos y demuestra tus habilidades estratégicas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoaquinEscobarDev/Mokepon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoaquinEscobarDev/Mokepon/issues"
+  },
+  "homepage": "https://github.com/JoaquinEscobarDev/Mokepon#readme"
+}
