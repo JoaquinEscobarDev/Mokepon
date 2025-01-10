@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JoaquinEscobarDev/Mokepon/issues"
   },
-  "homepage": "https://github.com/JoaquinEscobarDev/Mokepon#readme"
+  "homepage": "https://github.com/JoaquinEscobarDev/Mokepon#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
