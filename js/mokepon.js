@@ -19,6 +19,7 @@ const contenedorAtaques = document.getElementById("contenedorAtaques");
 const sectionVerMapa = document.getElementById("ver-mapa");
 const mapa = document.getElementById("mapa");
 
+let jugadorId = null;
 let mokepones = [];
 let ataqueJugador = [];
 let ataqueEnemigo = [];
@@ -71,13 +72,7 @@ class Mokepon {
   }
 
   pintarMokepon() {
-    lienzo.drawImage(
-      this.mapaFoto,
-      this.x,
-      this.y,
-      this.ancho,
-      this.alto
-    );
+    lienzo.drawImage(this.mapaFoto, this.x, this.y, this.ancho, this.alto);
   }
 }
 
@@ -208,23 +203,19 @@ function iniciarJuego() {
 }
 
 function unirseAlJuego() {
-  fetch("http://localhost:8080/unirse") // realiza llamada tipo GET por defecto
-    .then(function (res) {
-      console.log(res);
-      if (res.ok) {
-        return res.text(); // Retornamos el texto de la respuesta
-      } else {
-        throw new Error("Respuesta no fue ok");
-      }
-    })
-    .then(function (respuesta) {
-      console.log(respuesta); // Procesamos la respuesta una vez resuelta
-    })
-    .catch(function (error) {
-      console.error("Error al unirse al juego:", error); // Manejo de errores
-    });
-}
+  fetch("http://localhost:8080/unirse").then(function (res) {
+    if (res.ok) {
+      res
+        .text()
 
+        .then(function (respuesta) {
+          console.log(respuesta);
+
+          jugadorId = respuesta;
+        });
+    }
+  });
+}
 
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
@@ -245,11 +236,27 @@ function seleccionarMascotaJugador() {
     alert("Selecciona una mascota");
   }
 
+  seleccionarMokepon(mascotaJugador);
+
   extraerAtaques(mascotaJugador);
 
   sectionVerMapa.style.display = "flex";
 
   iniciarMapa();
+}
+
+function seleccionarMokepon(mascotaJugador) {
+  fetch(`http://localhost:8080/mokepon/${jugadorId}`, {
+    method: "post",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      mokepon: mascotaJugador,
+    }),
+  });
 }
 
 function extraerAtaques(mascotaJugador) {
@@ -451,13 +458,7 @@ function pintarCanvas() {
 
   lienzo.clearRect(0, 0, mapa.width, mapa.height);
 
-  lienzo.drawImage(
-    mapaBackground,
-    0,
-    0,
-    mapa.width,
-    mapa.height
-  );
+  lienzo.drawImage(mapaBackground, 0, 0, mapa.width, mapa.height);
 
   mascotaJugadorObjeto.pintarMokepon();
   hipodogeEnemigo.pintarMokepon();
